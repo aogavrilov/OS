@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "	Menu"
+echo "Nano - 1	Vi - 2"
+echo "Links - 3	Exit - 4"
+read line
+while [ "$line" != "4" ]
+do
+if [ "$line" == "1" ]
+then
+exec "nano"
+fi
+if [ "$line" == "2" ]
+then
+exec "vi"
+fi
+if [ "$line" == "3" ]
+then
+exec "links"
+fi
+if [ "$line" == "4" ] 
+then
+exit
+fi
+read line
+done
