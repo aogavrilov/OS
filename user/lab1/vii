@@ -1,0 +1,9 @@
+#!/bin/bash
+for file in /etc/*
+do
+while IFS= read -r line
+do grep '[A-Za-z0-9]+@[a-z]+.[a-z]+'
+read line
+done < file
+
+done
