@@ -5,21 +5,19 @@ echo "Links - 3	Exit - 4"
 read line
 while [ "$line" != "4" ]
 do
-if [ "$line" == "1" ]
-then
+case "$line" in
+"1")
 exec "nano"
-fi
-if [ "$line" == "2" ]
-then
+;;
+"2")
 exec "vi"
-fi
-if [ "$line" == "3" ]
-then
+;;
+"3")
 exec "links"
-fi
-if [ "$line" == "4" ] 
-then
+;;
+"4")
 exit
-fi
+;;
+esac
 read line
 done

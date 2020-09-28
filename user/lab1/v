@@ -1,8 +1,5 @@
 #!/bin/bash
-File=/var/log/anaconda/syslog
-while IFS= read -r line
-do
-awk '$2 == "INFO" { print $0 > "info.log" }'
-done < /var/log/anaconda/syslog
+
+awk '$2 == "INFO" { print $0 > "info.log" }' /var/log/anaconda/syslog
 
 	

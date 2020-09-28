@@ -1,13 +1,4 @@
 #!/bin/bash
-while IFS= read -r line
-do
-grep '(II)' > ful.log
-done < /var/log/anaconda/X.log
-while IFS= read -r line
-do
-grep '(WW)' >> ful.log 
-done < /var/log/anaconda/X.log
+grep '(II)' /var/log/anaconda/X.log | sed 's/(II)/(Warning)/' > full.log
+grep '(WW)' /var/log/anaconda/X.log | sed 's/(WW)/(Information)/' >> full.log
 
-sed 's/(II)/(Warning)/' ful.log > full.log
-sed 's/(WW)/(Information)/' ful.log >> full.log
-rm ful.log
