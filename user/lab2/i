@@ -1,0 +1,2 @@
+#!/bin/bash 
+ps -u | awk '{ if($1=="root") print $2, $11}' > result1.txt

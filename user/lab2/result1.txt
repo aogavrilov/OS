@@ -1,0 +1,4 @@
+1409 -bash
+1596 /bin/bash
+1597 ps
+1598 awk
