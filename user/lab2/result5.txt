@@ -1,8 +1,15 @@
-line
+
+4080 0 0
+4081 0 0
+4082 0 0
 Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
-Average_Sleeping_Children_of_PatientID=0 is 0
+1409 1105 .2132
+Average_Sleeping_Children_of_PatientID=1105 is .2132
+1758 1409 1.2937
+4076 1409 2.5895
+Average_Sleeping_Children_of_PatientID=1409 is 1.9416
+4077 4076 .0950
+4078 4076 .3475
+4079 4076 2.4263
+Average_Sleeping_Children_of_PatientID=4076 is .9562
+

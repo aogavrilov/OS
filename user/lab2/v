@@ -2,15 +2,17 @@
 
 file_input="result3.txt"
 file_output="result5.txt"
-
+echo "" > $file_output
 prev_ppid="0"
 art_sum="0"
 count="0"
 m="0"
 
+echo -e "$(<"$file_input")\n" | sed "s/[^0-9.]\+/ /g" | sed "s/^ //g" |
+
 while read line
 do
-	echo $line
+		
 	ppid=$(awk '{print $2}' <<< $line )
 	art=$(awk '{print $3}' <<< $line )
 	pid=$(awk '{print $1}'<<< $line )
@@ -19,24 +21,23 @@ do
 
 		
 		count=$(($count+1))
-		m=$(($m+$art))
-		echo line >> $file_output 
+		m=$(echo "scale=4; $m+$art"| bc)
+		echo $line >> $file_output 
 	else
-		echo $count
-		if [[ $count -ne "0" ]]
-		then
-			m=$(($m/$count))
-		fi
+				
+		m=$(echo "scale=4; $m/$count" | bc)
+		
 		echo "Average_Sleeping_Children_of_PatientID="$prev_ppid" is "$m >> $file_output
 		prev_ppid=$ppid
-		count="0"
-		m="0"
+		count=1
+		m=$art
+		echo $line >> $file_output
 	
 	fi
 
 
 
-done < $file_input
+done 
 
 
 
