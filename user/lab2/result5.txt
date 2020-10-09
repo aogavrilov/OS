@@ -1,0 +1,8 @@
+line
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
+Average_Sleeping_Children_of_PatientID=0 is 0
