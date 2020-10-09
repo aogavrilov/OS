@@ -1,0 +1,35 @@
+#!/bin/bash
+
+file_1="temp.log"
+file_2="temp2.log"
+
+ps aux | awk '{if($6 != 0) print $2" "$6" "$11}' | sort -nk1 > "$file_1"
+sleep 1m
+ps aux | awk '{if ($6 != 0) print $2 " " $6" "$11 }'| sort -nk1 > "$file_2"
+
+cat "$file_1" |
+while read line
+do
+	pid=$(awk '{print $1}' <<< $line)
+	mem1=$(awk '{print $2}' <<< $line)
+	patch=$(awk '{print $3}' <<< $line)
+	
+	mem2=$(cat "$file_2" | awk '{if ($1 == $pid) print $2}')
+	#echo $mem2" "$mem1
+	delta=$(echo "$mem2 - $mem1" | bc | sed 's/-//')
+	echo $pid":"$patch":"$delta  
+done | sort -t ":" -nk3 | tail -n3 
+rm temp*
+
+
+
+
+
+
+
+
+
+
+
+
+
