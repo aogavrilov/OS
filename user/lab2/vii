@@ -26,9 +26,12 @@ do
 	mem_2=$(grep "read_bytes" /proc/"$pid"/io | awk '{print $2}')
 	patch=$(awk -v id="$pid" '{if($1 == id) print $2 }' < "$file_1" )
 	mem_1=$(awk -v id="$pid" '{if($1 == id) print $3}' < "$file_1")	
-	delta=$(echo "$mem_2 - $mem_1" | bc)
-	echo $pid":"$patch":"$delta  
-done | sort -t ":" -nk3 | head -n 3 
+	if [[ -n bytes2 ]]
+	then 
+		delta=$(echo "$mem_2 - $mem_1" | bc)
+		echo $pid":"$patch":"$delta  
+	fi
+done | sort -t ":" -nk3 | tail -n 3 
 rm temp*
 
 

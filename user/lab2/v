@@ -22,7 +22,8 @@ do
 		
 		count=$(($count+1))
 		m=$(echo "scale=4; $m+$art"| bc)
-		echo $line >> $file_output 
+		line2=$(awk '{print "PID="$1" : PPID="$2" : ART="$3}' <<< $line)
+		echo $line2 >> $file_output 
 	else
 				
 		m=$(echo "scale=4; $m/$count" | bc)
@@ -31,7 +32,8 @@ do
 		prev_ppid=$ppid
 		count=1
 		m=$art
-		echo $line >> $file_output
+		line2=$(awk '{print "PID="$1" : PPID="$2" : ART="$3}' <<< $line)
+		echo $line2 >> $file_output
 	
 	fi
 

@@ -1,13 +1,11 @@
 #!/bin/bash
 
-for pid in $(ps -o pid | sed 1d)
+for pid in $(ps -eo pid | sed 1d)
 do 
 	
 	file_status="/proc/"$pid"/status"
 	file_sched="/proc/"$pid"/sched"
 	
-#	ppid=$( awk '{ if($1 == "ppid") print $2'} "$file_status" )
-#	echo $ppid
 	ppid=$( grep -Ehis "ppid" "$file_status" | grep -o "[0-9]\+")	
 	
 	sum_exec_runtime=$( grep -Ehis "se\.sum_exec_runtime" "$file_sched" | awk '{print $3}' )
@@ -15,13 +13,13 @@ do
 
 	if [ -z $ppid ]
 	then 
-		ppid=0
+	continue
 	fi
-	
 	if [ -z $sum_exec_runtime ] || [ -z $nr_switches ]
 	then 
 		art=0
 	else
+
 		art=$( echo "scale=4; $sum_exec_runtime/$nr_switches" | bc )
 	fi
 	echo "$pid $ppid $art"
